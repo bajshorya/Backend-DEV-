@@ -20,7 +20,8 @@ function calculateSum(n) {
 //   });
 // });
 app.get("/", function (req, res) {
-  const n = req.query.n; //used for adding input to the function that we are calling syntax => localhost:{portnumber}/?n=value
+  const n = req.query.n; //qury parameters
+  //used for adding input to the function that we are calling syntax => localhost:{portnumber}/?n=value
   const ans = calculateSum(n);
   // console.log(req.body);
   res.send("your ans is :" + ans);
