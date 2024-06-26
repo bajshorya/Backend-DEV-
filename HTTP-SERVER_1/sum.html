@@ -12,9 +12,8 @@
       fetch(`http://localhost:3000/sum?a=${a}&b=${b}`).then(function (
         response
       ) {
-        console.log(response);
         response.text().then(function (ans) {
-          console.log(ans);
+          document.getElementById("finalsum").innerHTML = ans;
         });
       });
     }
