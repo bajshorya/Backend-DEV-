@@ -28,8 +28,8 @@ function userExists(username, password) {
   let userExist = false;
   for (let i = 0; i < ALL_USERS.length; i++) {
     if (
-      ALL_USERS[i].username == username &&
-      ALL_USERS[i].password == password
+      ALL_USERS[i].username === username &&
+      ALL_USERS[i].password === password
     ) {
       userExist = true;
     }
@@ -60,7 +60,7 @@ app.get("/users", function (req, res) {
   // return a list of users other than this username
   res.json({
     users: ALL_USERS.filter(function (value) {
-      if ((value.username = username)) {
+      if (value.username !== username) {
         return false;
       } else {
         return true;
