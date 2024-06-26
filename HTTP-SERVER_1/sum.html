@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    function sum() {
+      const a = document.getElementById("input1").value;
+      const b = document.getElementById("input2").value;
+      fetch(`http://localhost:3000/sum?a=${a}&b=${b}`).then(function (
+        response
+      ) {
+        console.log(response);
+        response.text().then(function (ans) {
+          console.log(ans);
+        });
+      });
+    }
+  </script>
+  <body>
+    <input type="text" id="input1" /><br />
+    <input type="text" id="input2" /> <br />
+    <button onclick="sum()">Calculate Sum</button> <br /><br />
+    <div id="finalsum"></div>
+  </body>
+</html>

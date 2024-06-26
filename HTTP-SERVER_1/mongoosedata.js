@@ -17,6 +17,9 @@ app.post("/signup", async function (req, res) {
   if (existingUser) {
     return res.status(400).send("Username already exists!!!");
   }
+  else{
+    return res.send("No user found sss")
+  }
 });
 
 const User = mongoose.model("Users", {
