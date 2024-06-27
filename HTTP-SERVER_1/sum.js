@@ -12,7 +12,7 @@ app.get("/sum", (req, res) => {
   res.send(sum.toString());
 });
 
-app.get("/intrest", (req, res) => {
+app.get("/interest", (req, res) => {
   const principal = parseInt(req.query.principal);
 
   const rate = parseInt(req.query.rate);

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <script>
+    async function SI() {
+      const a = document.getElementById("principal").value;
+      const b = document.getElementById("time").value;
+      const c = document.getElementById("rate").value;
+
+      const response = await fetch(
+        `http://localhost:3000/interest?principal=${a}&rate=${b}&time=${c}`
+      );
+      const ans = await response.text();
+      document.getElementById("answer").innerHTML = ans;
+    }
+  </script>
+  <body>
+    <input type="text" id="principal" placeholder="principal" /><br />
+    <input type="text" id="time" placeholder="time" /><br />
+    <input type="text" id="rate" placeholder="rate" /> <br />
+    <button onclick="SI()">Calculate Interest and Total Amount</button>
+    <br /><br />
+    <div id="answer"></div>
+  </body>
+</html>
