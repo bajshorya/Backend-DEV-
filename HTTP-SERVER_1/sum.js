@@ -12,21 +12,17 @@ app.get("/sum", (req, res) => {
   res.send(sum.toString());
 });
 
+app.get("/intrest", (req, res) => {
+  const principal = parseInt(req.query.principal);
+
+  const rate = parseInt(req.query.rate);
+  const time = parseInt(req.query.time);
+  const SI = (principal * rate * time) / 100;
+  const total = SI + principal;
+  res.send({
+    total: total,
+    SI: SI,
+  });
+});
+
 app.listen(3000);
-// const express = require("express");
-// const cors = require("cors");
-// const app = express();
-
-// app.use(cors());
-// app.use(express.json());
-
-// app.get("/sum", (req, res) => {
-//   const a = parseInt(req.query.a);
-//   const b = parseInt(req.query.b);
-//   const sum = a + b;
-//   res.send(sum.toString());
-// });
-
-// app.listen(3000, () => {
-//   console.log("Server is running on port 3000");
-// });
