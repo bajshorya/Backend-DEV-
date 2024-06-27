@@ -6,6 +6,14 @@
     <title>Document</title>
   </head>
   <script>
+    let timeout;
+    function debounceSum() {
+      clearTimeout(timeout);
+      timeout = setTimeout(function () {
+        sum2();
+      }, 1000);
+    }
+
     function sum() {
       const a = document.getElementById("input1").value;
       const b = document.getElementById("input2").value;
@@ -26,9 +34,9 @@
     }
   </script>
   <body>
-    <input type="text" id="input1" /><br />
-    <input type="text" id="input2" /> <br />
-    <button onclick="sum2()">Calculate Sum</button> <br /><br />
+    <input oninput="debounceSum()" type="text" id="input1" /><br />
+    <input oninput="debounceSum()" type="text" id="input2" /> <br />
+    <!-- <button onclick="sum2()">Calculate Sum</button> <br /><br /> -->
     <div id="finalsum"></div>
   </body>
 </html>
