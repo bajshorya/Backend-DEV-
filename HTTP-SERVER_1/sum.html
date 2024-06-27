@@ -17,11 +17,18 @@
         });
       });
     }
+    async function sum2() {
+      const a = document.getElementById("input1").value;
+      const b = document.getElementById("input2").value;
+      const response = await fetch(`http://localhost:3000/sum?a=${a}&b=${b}`);
+      const ans = await response.text();
+      document.getElementById("finalsum").innerHTML = ans;
+    }
   </script>
   <body>
     <input type="text" id="input1" /><br />
     <input type="text" id="input2" /> <br />
-    <button onclick="sum()">Calculate Sum</button> <br /><br />
+    <button onclick="sum2()">Calculate Sum</button> <br /><br />
     <div id="finalsum"></div>
   </body>
 </html>
