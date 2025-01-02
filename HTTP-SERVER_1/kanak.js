@@ -6,7 +6,7 @@ app.use(express.json());
 // list of users
 var list = [
   { name: "Zombie Kapoor", kidneys: [{ health: true }, { health: false }] },
-  { name: "Lucifer Jain", kidneys: [{ health: false }, { health: true }] },
+  { name: "Lucifer Jain", kidneys: [  { health: false }, { health: true }] },
   { name: "Betaal Mahajan", kidneys: [{ health: false }] },
 ];
 
