@@ -5,14 +5,27 @@ const wss = new ws_1.WebSocketServer({ port: 8080 });
 let allSockets = [];
 let userCount = 0;
 wss.on("connection", (socket) => {
-    allSockets.push(socket);
-    userCount += 1;
-    console.log("user Connected #" + userCount);
     socket.on("message", (msg) => {
-        console.log("message received " + msg.toString());
-        for (let i = 0; i < allSockets.length; i++) {
-            const s = allSockets[i];
-            s.send(msg.toString() + "  msg recvd from sever");
+        const parsedMessage = JSON.parse(msg.toString()); //because msg will be a string like this "{"type":"send"}"
+        if (parsedMessage.type === "join") {
+            allSockets.push({
+                socket,
+                room: parsedMessage.payload.roomId,
+            });
+        }
+        if (parsedMessage.type == "chat") {
+            //   const currentUserRoom = allSockets.find((x) => x.socket == socket).room;
+            let currentUserRoom = null;
+            for (let i = 0; i < allSockets.length; i++) {
+                if (allSockets[i].socket == socket) {
+                    currentUserRoom = allSockets[i].room;
+                }
+            }
+            for (let i = 0; i < allSockets.length; i++) {
+                if (allSockets[i].room == currentUserRoom) {
+                    allSockets[i].socket.send(parsedMessage.payload.message);
+                }
+            }
         }
     });
 });
